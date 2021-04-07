@@ -10,6 +10,10 @@ config :rocketlivery, RocketliveryWeb.Endpoint,
   pubsub_server: Rocketlivery.PubSub,
   live_view: [signing_salt: "f8J0al2+"]
 
+config :rocketlivery, Rocketlivery.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
