@@ -9,26 +9,30 @@ defmodule Rocketlivery.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @create_required_params [:address, :cep, :cpf, :email, :name, :password]
   @update_required_params @create_required_params -- [:password]
-  @derive {Jason.Encoder, only: [:id, :address, :age, :cep, :cpf, :email, :name, :orders]}
+  @derive {Jason.Encoder, only: [:id, :address, :age, :cep, :city, :cpf, :email, :name, :orders, :uf]}
 
   schema "users" do
     field :address, :string
     field :age, :integer
     field :cep, :string
+    field :city, :string
     field :cpf, :string
     field :email, :string
     field :name, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :uf, :string
 
     has_many :orders, Order, on_delete: :nilify_all
 
     timestamps()
   end
 
+  def build(changeset), do: apply_action(changeset, :create)
+
   def changeset(params) do
     %__MODULE__{}
-    |> cast(params, [:age] ++ @create_required_params)
+    |> cast(params, [:age, :city, :uf] ++ @create_required_params)
     |> validate_required(@create_required_params)
     |> validate_length(:password, min: 6)
     |> validate_confirmation(:password)
@@ -49,6 +53,7 @@ defmodule Rocketlivery.User do
     |> validate_format(:email, ~r/@/)
     |> validate_length(:cep, is: 8)
     |> validate_length(:cpf, is: 11)
+    |> validate_length(:uf, is: 2)
     |> unique_constraint(:cpf)
     |> unique_constraint(:email)
   end
