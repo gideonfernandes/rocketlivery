@@ -8,4 +8,8 @@ defmodule RocketliveryWeb.ItemsView do
   end
 
   def render("item.json", %{item: %Item{} = item}), do: %{item: item}
+
+  def render("items.json", %{items: items}) do
+    Enum.map(items, fn item -> render("item.json", item: item) end)
+  end
 end

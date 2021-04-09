@@ -8,4 +8,8 @@ defmodule RocketliveryWeb.UsersView do
   end
 
   def render("user.json", %{user: %User{} = user}), do: %{user: user}
+
+  def render("users.json", %{users: users}) do
+    Enum.map(users, fn user -> render("user.json", user: user) end)
+  end
 end

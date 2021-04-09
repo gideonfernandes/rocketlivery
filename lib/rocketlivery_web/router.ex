@@ -11,8 +11,9 @@ defmodule RocketliveryWeb.Router do
   scope "/api", RocketliveryWeb do
     pipe_through :api
 
-    resources "/users", UsersController, except: [:new, :edit]
     resources "/items", ItemsController, except: [:new, :edit]
+    resources "/orders", OrdersController, except: [:new, :edit, :update]
+    resources "/users", UsersController, except: [:new, :edit]
   end
 
   if Mix.env() in [:dev, :test] do

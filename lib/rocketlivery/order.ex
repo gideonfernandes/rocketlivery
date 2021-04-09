@@ -11,13 +11,13 @@ defmodule Rocketlivery.Order do
   @required_params [:address, :comments, :payment_method, :user_id]
   @derive {Jason.Encoder, only: [:id] ++ @required_params}
 
-  schema "items" do
+  schema "orders" do
     field :address, :string
     field :comments, :string
     field :payment_method, Ecto.Enum, values: @payment_methods
 
     belongs_to :user, User
-    many_to_many :items, Item, join_through: "orders_items"
+    many_to_many :items, Item, join_through: "orders_items", on_delete: :delete_all
 
     timestamps()
   end
@@ -37,7 +37,7 @@ defmodule Rocketlivery.Order do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> put_assoc(:items, items)
+    |> validate_length(:address, min: 6)
     |> validate_length(:comments, min: 10)
-    |> validate_length(:description, min: 6)
   end
 end

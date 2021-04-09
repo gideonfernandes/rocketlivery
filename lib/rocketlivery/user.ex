@@ -9,7 +9,7 @@ defmodule Rocketlivery.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @create_required_params [:address, :cep, :cpf, :email, :name, :password]
   @update_required_params @create_required_params -- [:password]
-  @derive {Jason.Encoder, only: [:id, :address, :age, :cep, :cpf, :email, :name]}
+  @derive {Jason.Encoder, only: [:id, :address, :age, :cep, :cpf, :email, :name, :orders]}
 
   schema "users" do
     field :address, :string

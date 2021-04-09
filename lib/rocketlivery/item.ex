@@ -8,7 +8,7 @@ defmodule Rocketlivery.Item do
   @primary_key {:id, :binary_id, autogenerate: true}
   @item_categories [:desert, :drink, :food]
   @required_params [:category, :description, :photo, :price]
-  @derive {Jason.Encoder, only: [:id] ++ @required_params}
+  @derive {Jason.Encoder, only: [:id, :orders] ++ @required_params}
 
   schema "items" do
     field :category, Ecto.Enum, values: @item_categories
@@ -16,7 +16,7 @@ defmodule Rocketlivery.Item do
     field :photo, :string
     field :price, :decimal
 
-    many_to_many :orders, Order, join_through: "orders_items"
+    many_to_many :orders, Order, join_through: "orders_items", on_delete: :delete_all
 
     timestamps()
   end

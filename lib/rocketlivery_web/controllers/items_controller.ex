@@ -3,6 +3,7 @@ defmodule RocketliveryWeb.ItemsController do
 
   alias Rocketlivery.Item
   alias RocketliveryWeb.FallbackController
+  alias RocketliveryWeb.ItemsView
 
   action_fallback FallbackController
 
@@ -19,6 +20,14 @@ defmodule RocketliveryWeb.ItemsController do
       conn
       |> put_status(:no_content)
       |> text("")
+    end
+  end
+
+  def index(conn, _params) do
+    with {:ok, items} <- Rocketlivery.index_items() do
+      conn
+      |> put_status(:ok)
+      |> render("items.json", items: items)
     end
   end
 

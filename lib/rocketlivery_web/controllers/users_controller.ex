@@ -22,6 +22,14 @@ defmodule RocketliveryWeb.UsersController do
     end
   end
 
+  def index(conn, _params) do
+    with {:ok, users} <- Rocketlivery.index_users() do
+      conn
+      |> put_status(:ok)
+      |> render("users.json", users: users)
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     with {:ok, %User{} = user} <- Rocketlivery.get_user(id) do
       conn
