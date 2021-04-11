@@ -2,8 +2,7 @@ defmodule RocketliveryWeb.UsersController do
   use RocketliveryWeb, :controller
 
   alias Rocketlivery.User
-  alias RocketliveryWeb.Auth.Guardian
-  alias RocketliveryWeb.FallbackController
+  alias RocketliveryWeb.{Auth.Guardian, FallbackController}
 
   action_fallback FallbackController
 
@@ -37,14 +36,6 @@ defmodule RocketliveryWeb.UsersController do
       conn
       |> put_status(:ok)
       |> render("user.json", user: user)
-    end
-  end
-
-  def sign_in(conn, params) do
-    with {:ok, token, %User{} = user} <- Guardian.authenticate(params) do
-      conn
-      |> put_status(:ok)
-      |> render("sign_in.json", token: token, user: user)
     end
   end
 

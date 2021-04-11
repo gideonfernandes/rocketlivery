@@ -9,17 +9,23 @@ defmodule RocketliveryWeb.UsersViewTest do
   test "renders create.json" do
     user = build(:user)
 
-    response = render(UsersView, "create.json", user: user)
+    token = "an_auth_token"
+
+    response = render(UsersView, "create.json", token: token, user: user)
 
     assert %{
              message: "User created successfully!",
+             token: "an_auth_token",
              user: %{
                address: "Rua das Bananeiras",
                age: 22,
                cep: "12345678",
+               city: "Araras",
                cpf: "12345678900",
                email: "gideon@gmail.com",
-               name: "Gideon Fernandes"
+               name: "Gideon Fernandes",
+               password: "123456",
+               uf: "SP"
              }
            } = response
   end

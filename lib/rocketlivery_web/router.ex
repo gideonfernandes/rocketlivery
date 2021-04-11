@@ -8,13 +8,23 @@ defmodule RocketliveryWeb.Router do
     plug UUIDChecker
   end
 
+  pipeline :auth do
+    plug RocketliveryWeb.Auth.Pipeline
+  end
+
   scope "/api", RocketliveryWeb do
     pipe_through :api
 
+    resources "/auth", AuthController, only: [:create]
+    resources "/users", UsersController, only: [:create]
+  end
+
+  scope "/api", RocketliveryWeb do
+    pipe_through :auth
+
     resources "/items", ItemsController, except: [:new, :edit]
     resources "/orders", OrdersController, except: [:new, :edit, :update]
-    resources "/users", UsersController, except: [:new, :edit]
-    post "/users/signin", UsersController, :sign_in
+    resources "/users", UsersController, except: [:new, :create, :edit]
   end
 
   if Mix.env() in [:dev, :test] do

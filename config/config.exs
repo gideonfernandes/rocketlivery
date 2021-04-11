@@ -20,6 +20,10 @@ config :rocketlivery, RocketliveryWeb.Auth.Guardian,
   issuer: "rocketlivery",
   secret_key: "TXXAFr6h/o26LsHDdZWvX3izhZpRzHsHtsqLhfMPwYhHn4Wh7yTySKjHZFc+t9zb"
 
+config :rocketlivery, RocketliveryWeb.Auth.Pipeline,
+  module: RocketliveryWeb.Auth.Guardian,
+  error_handler: RocketliveryWeb.Auth.ErrorHandler
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

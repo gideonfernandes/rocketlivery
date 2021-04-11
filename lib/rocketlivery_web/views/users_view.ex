@@ -7,9 +7,6 @@ defmodule RocketliveryWeb.UsersView do
     %{message: "User created successfully!", token: token, user: user}
   end
 
-  def render("sign_in.json", %{token: token, user: %User{} = user}),
-    do: %{token: token, user: user}
-
   def render("user.json", %{user: %User{} = user}), do: %{user: user}
 
   def render("users.json", %{users: users}) do

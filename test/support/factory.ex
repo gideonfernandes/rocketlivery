@@ -11,7 +11,9 @@ defmodule Rocketlivery.Factory do
       cpf: "12345678900",
       email: "gideon@gmail.com",
       name: "Gideon Fernandes",
-      password: "123456"
+      password: "123456",
+      uf: "SP",
+      city: "Araras"
     }
   end
 
