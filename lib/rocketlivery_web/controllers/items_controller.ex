@@ -3,7 +3,6 @@ defmodule RocketliveryWeb.ItemsController do
 
   alias Rocketlivery.Item
   alias RocketliveryWeb.FallbackController
-  alias RocketliveryWeb.ItemsView
 
   action_fallback FallbackController
 

@@ -11,4 +11,6 @@ config :rocketlivery, RocketliveryWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :rocketlivery, Rocketlivery.Users.Create, via_cep_adapter: Rocketlivery.ViaCep.ClientMock
+
 config :logger, level: :warn
