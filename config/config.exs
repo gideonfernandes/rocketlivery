@@ -16,6 +16,10 @@ config :rocketlivery, Rocketlivery.Repo,
 
 config :rocketlivery, Rocketlivery.Users.Create, via_cep_adapter: Rocketlivery.ViaCep.Client
 
+config :rocketlivery, RocketliveryWeb.Auth.Guardian,
+  issuer: "rocketlivery",
+  secret_key: "TXXAFr6h/o26LsHDdZWvX3izhZpRzHsHtsqLhfMPwYhHn4Wh7yTySKjHZFc+t9zb"
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

@@ -14,6 +14,7 @@ defmodule RocketliveryWeb.Router do
     resources "/items", ItemsController, except: [:new, :edit]
     resources "/orders", OrdersController, except: [:new, :edit, :update]
     resources "/users", UsersController, except: [:new, :edit]
+    post "/users/signin", UsersController, :sign_in
   end
 
   if Mix.env() in [:dev, :test] do

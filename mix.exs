@@ -33,23 +33,26 @@ defmodule Rocketlivery.MixProject do
 
   defp deps do
     [
+      {:ex_machina, "~> 2.7.0"},
+      {:gettext, "~> 0.11"},
+      {:guardian, "~> 2.0"},
+      {:hackney, "~> 1.17.0"},
+      {:jason, "~> 1.0"},
+      {:ecto_sql, "~> 3.4"},
+      {:pbkdf2_elixir, "~> 1.3"},
       {:phoenix, "~> 1.5.8"},
       {:phoenix_ecto, "~> 4.1"},
-      {:ecto_sql, "~> 3.4"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.4"},
+      {:plug_cowboy, "~> 2.0"},
+      {:postgrex, ">= 0.0.0"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:pbkdf2_elixir, "~> 1.3"},
-      {:excoveralls, "~> 0.10", only: :test},
-      {:ex_machina, "~> 2.7.0"},
       {:tesla, "~> 1.4.0"},
-      {:hackney, "~> 1.17.0"},
+
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+
       {:bypass, "~> 2.1", only: :test},
+      {:excoveralls, "~> 0.10", only: :test},
       {:mox, "~> 1.0", only: :test}
     ]
   end

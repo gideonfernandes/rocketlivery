@@ -26,6 +26,7 @@ defmodule Rocketlivery do
   defdelegate create_user(params), to: CreateUser, as: :call
   defdelegate delete_user(id), to: DeleteUser, as: :call
   defdelegate get_user(id), to: GetUser, as: :call
+  defdelegate get_user_by_email(email), to: GetUser, as: :get_by_email
   defdelegate index_users(), to: IndexUsers, as: :call
   defdelegate update_user(params), to: UpdateUser, as: :call
 end

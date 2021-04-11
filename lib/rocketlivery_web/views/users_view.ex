@@ -3,9 +3,12 @@ defmodule RocketliveryWeb.UsersView do
 
   alias Rocketlivery.User
 
-  def render("create.json", %{user: %User{} = user}) do
-    %{message: "User created successfully!", user: user}
+  def render("create.json", %{token: token, user: %User{} = user}) do
+    %{message: "User created successfully!", token: token, user: user}
   end
+
+  def render("sign_in.json", %{token: token, user: %User{} = user}),
+    do: %{token: token, user: user}
 
   def render("user.json", %{user: %User{} = user}), do: %{user: user}
 
