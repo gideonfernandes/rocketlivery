@@ -6,7 +6,8 @@ defmodule Rocketlivery.Application do
       Rocketlivery.Repo,
       RocketliveryWeb.Telemetry,
       {Phoenix.PubSub, name: Rocketlivery.PubSub},
-      RocketliveryWeb.Endpoint
+      RocketliveryWeb.Endpoint,
+      Rocketlivery.Orders.ReportRunner
     ]
 
     opts = [strategy: :one_for_one, name: Rocketlivery.Supervisor]
