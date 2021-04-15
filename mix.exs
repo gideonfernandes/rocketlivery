@@ -48,9 +48,7 @@ defmodule Rocketlivery.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:tesla, "~> 1.4.0"},
-
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-
       {:bypass, "~> 2.1", only: :test},
       {:excoveralls, "~> 0.10", only: :test},
       {:mox, "~> 1.0", only: :test}

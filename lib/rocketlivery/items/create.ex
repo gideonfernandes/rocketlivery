@@ -1,11 +1,10 @@
 defmodule Rocketlivery.Items.Create do
   alias Ecto.Changeset
-  alias Rocketlivery.{Error, Repo, Item}
+  alias Rocketlivery.{Error, Item, Repo}
 
   def call(params) do
-    with {:ok, %Item{} = result} <- Repo.insert(Item.changeset(params)) do
-      {:ok, result}
-    else
+    case Repo.insert(Item.changeset(params)) do
+      {:ok, %Item{} = result} -> {:ok, result}
       {:error, %Changeset{} = changeset} -> {:error, Error.build(:bad_request, changeset)}
     end
   end

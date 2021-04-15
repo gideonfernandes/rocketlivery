@@ -1,10 +1,9 @@
 defmodule Rocketlivery.Items.Delete do
-  alias Rocketlivery.{Error, Repo, Item}
+  alias Rocketlivery.{Error, Item, Repo}
 
   def call(id) do
-    with %Item{} = item <- Repo.get(Item, id) do
-      Repo.delete(item)
-    else
+    case Repo.get(Item, id) do
+      %Item{} = item -> Repo.delete(item)
       nil -> {:error, Error.build_item_not_found_error()}
     end
   end

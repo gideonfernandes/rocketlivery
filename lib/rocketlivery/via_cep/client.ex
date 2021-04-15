@@ -10,9 +10,10 @@ defmodule Rocketlivery.ViaCep.Client do
   alias Tesla.Env
 
   def get_cep_info(url \\ @base_url, cep) do
-    with {:ok, %Env{status: 200, body: body}} <- get("#{url}#{cep}/json") do
-      {:ok, body}
-    else
+    case get("#{url}#{cep}/json") do
+      {:ok, %Env{status: 200, body: body}} ->
+        {:ok, body}
+
       {:ok, %Env{status: 400, body: _body}} ->
         {:error, Error.build(:bad_request, "Invalid CEP!")}
 

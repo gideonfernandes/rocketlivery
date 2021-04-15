@@ -18,16 +18,16 @@ defmodule Rocketlivery do
   defdelegate create_item(params), to: CreateItem, as: :call
   defdelegate delete_item(id), to: DeleteItem, as: :call
   defdelegate get_item(id), to: GetItem, as: :call
-  defdelegate index_items(), to: IndexItems, as: :call
+  defdelegate index_items, to: IndexItems, as: :call
   defdelegate update_item(params), to: UpdateItem, as: :call
   defdelegate create_order(params), to: CreateOrder, as: :call
   defdelegate delete_order(id), to: DeleteOrder, as: :call
-  defdelegate index_orders(), to: IndexOrders, as: :call
+  defdelegate index_orders, to: IndexOrders, as: :call
   defdelegate get_order(id), to: GetOrder, as: :call
   defdelegate create_user(params), to: CreateUser, as: :call
   defdelegate delete_user(id), to: DeleteUser, as: :call
   defdelegate get_user(id), to: GetUser, as: :call
   defdelegate get_user_by_email(email), to: GetUserByEmail, as: :call
-  defdelegate index_users(), to: IndexUsers, as: :call
+  defdelegate index_users, to: IndexUsers, as: :call
   defdelegate update_user(params), to: UpdateUser, as: :call
 end

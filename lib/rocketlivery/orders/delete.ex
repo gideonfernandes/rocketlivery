@@ -1,10 +1,9 @@
 defmodule Rocketlivery.Orders.Delete do
-  alias Rocketlivery.{Error, Repo, Order}
+  alias Rocketlivery.{Error, Order, Repo}
 
   def call(id) do
-    with %Order{} = order <- Repo.get(Order, id) do
-      Repo.delete(order)
-    else
+    case Repo.get(Order, id) do
+      %Order{} = order -> Repo.delete(order)
       nil -> {:error, Error.build_order_not_found_error()}
     end
   end

@@ -29,7 +29,7 @@ defmodule Rocketlivery.Orders.ReportRunner do
     {:noreply, state}
   end
 
-  defp schedule_report_generation() do
+  defp schedule_report_generation do
     Process.send_after(self(), :generate, 1000 * 60 * 60)
   end
 end
