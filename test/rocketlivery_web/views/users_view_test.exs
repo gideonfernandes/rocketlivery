@@ -21,8 +21,8 @@ defmodule RocketliveryWeb.UsersViewTest do
                age: 22,
                cep: "12345678",
                city: "Araras",
-               cpf: "12345678900",
-               email: "gideon@gmail.com",
+               cpf: _cpf,
+               email: _email,
                name: "Gideon Fernandes",
                password: "123456",
                uf: "SP"
@@ -40,8 +40,8 @@ defmodule RocketliveryWeb.UsersViewTest do
                address: "Rua das Bananeiras",
                age: 22,
                cep: "12345678",
-               cpf: "12345678900",
-               email: "gideon@gmail.com",
+               cpf: _cpf,
+               email: _email,
                name: "Gideon Fernandes"
              }
            } = response
